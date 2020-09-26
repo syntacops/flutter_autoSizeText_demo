@@ -1,5 +1,10 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_autoSizeText_demo/widgets/00_differences_demo.dart';
+import 'package:flutter_autoSizeText_demo/widgets/sandbox.dart';
+
+import '../widgets/01_properties_demo.dart';
+import '../widgets/02_richtext_demo.dart';
+import '../widgets/03_groups_demo.dart';
 //import 'package:widget_with_codeview/widget_with_codeview.dart';
 
 class AutoSizeTextDemoScreen extends StatefulWidget {
@@ -8,13 +13,8 @@ class AutoSizeTextDemoScreen extends StatefulWidget {
 }
 
 class _AutoSizeTextDemoScreenState extends State<AutoSizeTextDemoScreen> {
-  int _maxLines = 1;
-
   @override
   Widget build(BuildContext context) {
-    String _sentence =
-        'Hello, I am a very clever $_maxLines-liner text inside a ';
-
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -23,23 +23,13 @@ class _AutoSizeTextDemoScreenState extends State<AutoSizeTextDemoScreen> {
       body: Center(
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 32, horizontal: 16),
-          child: Column(
+          child: PageView(
             children: [
-              Container(
-                padding: const EdgeInsets.all(8.0),
-                color: Colors.grey[700],
-                width: double.infinity,
-                child: AutoSizeText(
-                  _sentence + 'container!',
-                  style: TextStyle(fontSize: 30.0),
-                  maxLines: _maxLines,
-                ),
-              ),
-              SizedBox(height: 10),
-              TextFormField(
-                initialValue: _sentence + ' TextFormField!',
-                maxLines: _maxLines,
-              ),
+              Sandbox(),
+              DifferencesDemo(),
+              AutoSizeTextPropertiesDemo(),
+              RichTextDemo(),
+              GroupsDemo(),
             ],
           ),
         ),
